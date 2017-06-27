@@ -1,13 +1,36 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <v-header></v-header>
+    <P>
+    <router-link to="/goods">商品</router-link>
+    <router-link to="/ratings">评论</router-link>
+    <router-link to="/seller">商家</router-link>
+    </P>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
+import header from './components/header.vue'
 export default {
-  name: 'app'
+  name: 'app',
+  components: {
+    'v-header': header
+  },
+  date () {
+    return {
+      seller: {}
+    }
+  },
+  created () {
+    this.$http.get('/api/seller').then((response) => {
+      response = response.body
+      if (response === 0) {
+        this.seller = response.data
+        console.log(this.seller)
+      }
+    })
+  }
 }
 </script>
 
