@@ -12,6 +12,7 @@
 
 <script>
 import header from './components/header.vue'
+const ERR_OK = 0
 export default {
   name: 'app',
   components: {
@@ -25,7 +26,7 @@ export default {
   created () {
     this.$http.get('/api/seller').then((response) => {
       response = response.body
-      if (response === 0) {
+      if (response.errno === ERR_OK) {
         this.seller = response.data
         console.log(this.seller)
       }
