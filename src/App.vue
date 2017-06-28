@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <v-header></v-header>
+    <v-header :seller="seller"></v-header>
     <P>
     <router-link to="/goods">商品</router-link>
     <router-link to="/ratings">评论</router-link>
