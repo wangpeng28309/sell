@@ -19,9 +19,19 @@
       	  </span>
       	</div>
       </div>
-
+      <div v-if="seller.supports" class="support-count">
+        <span class="count">{{seller.supports.length}}个</span>
+        <span class="icon-keyboard_arrow_right"></span>
+      </div>
     </div>  
-    <div class="bulletin-wrapper"></div>
+    <div class="bulletin-wrapper">
+      <span class="bulletin-title"></span>
+      <span class="bulletin-text" @click="showDetail">{{seller.bulletin}}</span>
+    </div>
+    <div class="background">
+      <img v-bind:src="seller.avatar" width="100%" height="100%">
+    </div>
+    <div v-show="detailShow" class="detail"></div>
   </div>
 </template>
 
@@ -32,11 +42,48 @@ export default {
     seller: {
       type: Object
     }
+  },
+  data () {
+    return {
+      detailShow: false
+    }
+  },
+  methods: {
+    showDetail () {
+      this.detailShow = true
+    }
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+  .header {
+    position: relative;
+    background: rgba(7, 17, 27, 0.5);
+    overflow: hidden;
+  }
+  .bulletin-wrapper {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    filter: blur(10px);
+  }
+  .detail {
+    position: fixed;
+    z-index: 100;
+    background: rgba(7, 17, 27, 0.8);
+    overflow: auto;
+    width: 100%;
+    height: 100%;
+    top: 0;
+  }
 </style>
