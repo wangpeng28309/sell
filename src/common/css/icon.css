@@ -35,12 +35,14 @@
 }
 .icon-close:before {
   content: "\e903";
+  color: white;
 }
 .icon-favorite:before {
   content: "\e904";
 }
 .icon-keyboard_arrow_right:before {
   content: "\e905";
+  color: white;
 }
 .icon-remove_circle_outline:before {
   content: "\e906";
