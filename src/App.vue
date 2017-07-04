@@ -1,11 +1,17 @@
 <template>
   <div id="app">
     <v-header :seller="seller"></v-header>
-    <P>
-    <router-link to="/goods">商品</router-link>
-    <router-link to="/ratings">评论</router-link>
-    <router-link to="/seller">商家</router-link>
-    </P>
+    <div class="title">
+      <div class="title-item">
+        <router-link to="/goods">商品</router-link>
+      </div>
+      <div class="title-item">
+        <router-link to="/ratings">评论</router-link>
+      </div>
+      <div class="title-item">
+        <router-link to="/seller">商家</router-link>
+      </div>
+    </div>
     <router-view></router-view>
   </div>
 </template>
@@ -36,7 +42,11 @@ export default {
 }
 </script>
 
-<style>
-#app {
-}
+<style scoped lang="stylus">
+  .title
+    display: flex
+    width: 100%
+    .title-item
+      flex: 1
+      text-align: center
 </style>
