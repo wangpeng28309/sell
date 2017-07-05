@@ -2,8 +2,8 @@
   <div class="goods">
     <div class="menu-wrapper" ref="menuWrapper">
       <ul>
-        <li v-for="item in goods">
-          <span>
+        <li v-for="item in goods" class="menu-item">
+          <span class="text">
           <span v-show="item.type > 0" class="icon" :class="classMap[item.type]"></span>{{item.name}}
           </span>
         </li>
@@ -80,7 +80,7 @@ export default {
 .goods
   display: flex
   position: absolute
-  top: 140px
+  top: 164px
   bottom: 46px
   width: 100%
   overflow: hidden
@@ -88,6 +88,9 @@ export default {
     flex: 0  0 80px
     width: 80px
     background: #f3f5f7
+    .menu-item
+      display: table
+      height: 54px
   .foods-wrapper
     flex: 1
 </style>

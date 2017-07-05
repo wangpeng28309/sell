@@ -46,6 +46,8 @@ export default {
   .title
     display: flex
     width: 100%
+    height: 40px
+    line-height: 40px
     .title-item
       flex: 1
       text-align: center
