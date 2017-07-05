@@ -26,6 +26,7 @@ var appDate = require('../data.json')
 var seller = appDate.seller
 var goods = appDate.goods
 var ratings = appDate.ratings
+var foodInfo = appDate.goods[0].foods[0].info 
 
 var apiRoutes = express.Router()
 
@@ -47,6 +48,13 @@ apiRoutes.get('/ratings', function (req, res) {
   res.json({
     errno: 0,
     data: ratings
+  })
+})
+
+apiRoutes.get('/goods/foods/info', function (req, res) {
+  res.json({
+    errno: 0,
+    data: foodInfo
   })
 })
 
