@@ -14,7 +14,7 @@
         <li v-for="item in goods" class="food-list" ref="foodList">
           <h1 class="title">{{item.name}}</h1>
           <ul>
-            <li v-for="food in item.foods" class="food-item">
+            <li v-for="food in item.foods" class="food-item" @click="selectFood(food, $event)">
               <div class="icon">
                 <img width="57px" height="57px" :src="food.icon">
               </div>
@@ -35,11 +35,13 @@
         </li>
       </ul>
     </div>
+    <food :food="selectedFood" ref="food"></food>
   </div>
 </template>
 
 <script>
 import BScroll from 'better-scroll'
+import food from '../food/food.vue'
 const ERR_OK = 0
 export default {
   name: 'goods',
@@ -52,8 +54,12 @@ export default {
     return {
       goods: [],
       listHeight: [],
-      scrollY: 0
+      scrollY: 0,
+      selectedFood: {}
     }
+  },
+  components: {
+    food
   },
   computed: {
     currentIndex () {
@@ -111,6 +117,13 @@ export default {
       let foodList = this.$refs.foodList
       let el = foodList[index]
       this.foodsScroll.scrollToElement(el)
+    },
+    selectFood (food, event) {
+      if (!event._constructed) {
+        return
+      }
+      this.selectedFood = food
+      this.$refs.food.show()
     }
   }
 }
