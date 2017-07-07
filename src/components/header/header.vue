@@ -2,7 +2,7 @@
   <div class="header">
     <div class="content-wrapper">
       <div class="avatar">
-      	<img width="64" height="64" v-bind:src="seller.avatar">
+      	<img width="64" height="64" :src="seller.avatar">
       </div>
       <div class="content">
       	<div class="title">
@@ -27,7 +27,7 @@
       <span class="bulletin-text">{{seller.bulletin}}</span>
     </div>
     <div class="background">
-      <img v-bind:src="seller.avatar" width="100%" height="100%">
+      <img :src="seller.avatar" width="100%" height="100%">
     </div>
     <div v-show="detailShow" class="detail">
       <div class="detail-wrapper clearfix">

@@ -25,17 +25,14 @@
       </div>
       <div class="ratings">
         <h1 class="title">商品评价</h1>
-        <div class="">
-          <span class="">全部</span>
-          <span class="">推荐</span>
-          <span class="">吐槽</span>
-        </div>
+        <ratingselect :food="food"></ratingselect>
       </div>
     </div>
   </transition>
 </template>
 
 <script>
+import ratingselect from '../ratingselect/ratingselect.vue'
 export default {
   name: 'food',
   data () {
@@ -47,6 +44,9 @@ export default {
     food: {
       type: Object
     }
+  },
+  components: {
+    ratingselect
   },
   computed: {
     starType () {
@@ -71,7 +71,7 @@ export default {
   position: fixed
   top: 0
   left: 0
-  bottom: 46px
+  bottom: 0
   z-index: 30
   width: 100%
   background: #fff

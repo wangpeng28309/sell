@@ -135,7 +135,7 @@ export default {
   display: flex
   position: absolute
   top: 164px
-  bottom: 46px
+  bottom: 0
   width: 100%
   overflow: hidden
   .menu-wrapper
