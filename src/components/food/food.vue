@@ -25,7 +25,18 @@
       </div>
       <div class="ratings">
         <h1 class="title">商品评价</h1>
-        <ratingselect :food="food"></ratingselect>
+        <ratingselect :ratings="food.ratings" @select="selectEvent" @toggleContent="toggleContentEvent"></ratingselect>
+        <div class="content">
+          <ul class="rating-content">
+            <li class="rating" v-for="item in food.ratings" v-show="needShow(item.rateType, item.text)">
+              <span class="time">{{new Date(item.rateTime)}}</span>
+              <span class="text">{{item.text}}</span>
+              <img class="avatar" width="12" height="12" :src="item.avatar">
+              <span class="username">{{item.username}}</span>
+              <span :class="{'icon-thumb_up': item.rateType === 0, 'icon-thumb_down': item.rateType === 1}"></span>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </transition>
@@ -37,7 +48,9 @@ export default {
   name: 'food',
   data () {
     return {
-      showFlag: false
+      showFlag: false,
+      selectType: 2,
+      onlyContent: false
     }
   },
   props: {
@@ -59,6 +72,23 @@ export default {
     },
     back () {
       this.showFlag = false
+    },
+    needShow (type, text) {
+      if (this.onlyContent && !text) {
+        return false
+      }
+      if (this.selectType === 2) {
+        return true
+      } else {
+        return type === this.selectType
+      }
+    },
+    selectEvent (type) {
+      this.selectType = type
+      console.log(this.selectType)
+    },
+    toggleContentEvent () {
+      this.onlyContent = !this.onlyContent
     }
   }
 }
