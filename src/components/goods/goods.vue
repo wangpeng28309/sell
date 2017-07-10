@@ -30,11 +30,13 @@
                 <span>${{food.price}}</span>
                 <span v-show="food.oldPrice">${{food.oldPrice}}</span>
               </div>
+              <cartcontrol></cartcontrol>
             </li>
           </ul>
         </li>
       </ul>
     </div>
+    <shopcart :seller="seller"></shopcart>
     <food :food="selectedFood" ref="food"></food>
   </div>
 </template>
@@ -42,6 +44,8 @@
 <script>
 import BScroll from 'better-scroll'
 import food from '../food/food.vue'
+import shopcart from '../shopcart/shopcart.vue'
+import cartcontrol from '../cartcontrol/cartcontrol.vue'
 const ERR_OK = 0
 export default {
   name: 'goods',
@@ -59,7 +63,9 @@ export default {
     }
   },
   components: {
-    food
+    food,
+    shopcart,
+    cartcontrol
   },
   computed: {
     currentIndex () {
@@ -135,7 +141,7 @@ export default {
   display: flex
   position: absolute
   top: 164px
-  bottom: 0
+  bottom: 46px
   width: 100%
   overflow: hidden
   .menu-wrapper
