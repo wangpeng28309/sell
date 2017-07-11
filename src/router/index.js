@@ -10,6 +10,10 @@ Vue.use(Resource)
 export default new Router({
   routes: [
     {
+      path: '/',
+      redirect: '/ratings'
+    },
+    {
       path: '/goods',
       name: 'goods',
       component: goods

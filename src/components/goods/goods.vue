@@ -30,13 +30,13 @@
                 <span>${{food.price}}</span>
                 <span v-show="food.oldPrice">${{food.oldPrice}}</span>
               </div>
-              <cartcontrol></cartcontrol>
+              <cartcontrol :food="food"></cartcontrol>
             </li>
           </ul>
         </li>
       </ul>
     </div>
-    <shopcart :seller="seller"></shopcart>
+    <shopcart :seller="seller" :selectFoods="selectFoods"></shopcart>
     <food :food="selectedFood" ref="food"></food>
   </div>
 </template>
@@ -77,6 +77,17 @@ export default {
         }
       }
       return 0
+    },
+    selectFoods () {
+      let purchaseFoods = []
+      this.goods.forEach((good) => {
+        good.foods.forEach((food) => {
+          if (food.count) {
+            purchaseFoods.push(food)
+          }
+        })
+      })
+      return purchaseFoods
     }
   },
   created () {
